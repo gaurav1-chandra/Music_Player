@@ -1,2 +1,2 @@
 # MusicPlayer
- This is a multiple choice quiz app which has the feature of selecting the topic and difficulty level for the quiz and certain other features.This app is developed on android studio using java programming language with the help of sqlite database.
+ This is a music player app which has feature to show  and play all mp3 song from your phone.It has play,pause,next,prev,fastforword,fastrewind buttons and audio visualiser.
