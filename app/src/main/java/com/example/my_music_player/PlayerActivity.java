@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
 
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class PlayerActivity extends AppCompatActivity {
   Button btnplay, btnnext, btnprev, btnff, btnfr;
   TextView txtsname ,txtsstart, txtsstop;
-  SeekBar seekmusic;
+  SeekBar seekmusic,seekaudio;
   BarVisualizer visualizer;
 
   String  sname;
@@ -62,7 +63,7 @@ public class PlayerActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Now Playing");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+       seekaudio=findViewById(R.id.seekaudio);
         btnff=findViewById(R.id.btnff);
         btnplay=findViewById(R.id.playbtn);
         btnnext=findViewById(R.id.btnnext);
@@ -110,6 +111,30 @@ public class PlayerActivity extends AppCompatActivity {
             }
         };
 
+
+        seekaudio.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekaudio.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                seekaudio.setVisibility(View.VISIBLE);
+                int progress=seekBar.getProgress();
+                int x = (int) Math.ceil(progress / 1000f);
+
+                if (x != 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
+                    clearMediaPlayer();
+                    fab.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, android.R.drawable.ic_media_play));
+                    MainActivity.this.seekBar.setProgress(0);
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         seekmusic.setMax(mediaPlayer.getDuration());
         updateseekbar.start();
         seekmusic.getProgressDrawable().setColorFilter(getResources().getColor(R.color.design_default_color_primary), PorterDuff.Mode.MULTIPLY);
@@ -251,5 +276,14 @@ public class PlayerActivity extends AppCompatActivity {
         }
         time+=sec;
         return time;
+    }
+
+
+}
+
+    private void clearMediaPlayer() {
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        mediaPlayer = null;
     }
 }

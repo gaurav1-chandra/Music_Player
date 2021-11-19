@@ -45,13 +45,14 @@
             <SeekBar
                 android:id="@+id/seekbar"
                 android:layout_centerInParent="true"
-                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content">
 
             </SeekBar>
+
             <TextView
                 android:id="@+id/txtsstart"
                 android:layout_toLeftOf="@id/seekbar"
@@ -69,6 +70,49 @@
             <TextView
                 android:id="@+id/txtsstop"
                 android:layout_toRightOf="@id/seekbar"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="false"
+                android:layout_marginRight="20dp"
+                android:text="0:10"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <SeekBar
+                android:id="@+id/seekaudio"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content">
+
+            </SeekBar>
+
+            <TextView
+                android:id="@+id/txtsmin"
+                android:layout_toLeftOf="@id/seekaudio"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="false"
+                android:layout_marginLeft="20dp"
+                android:text="0:10"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtsmax"
+                android:layout_toRightOf="@id/seekaudio"
                 android:layout_centerInParent="true"
                 android:layout_alignParentRight="false"
                 android:layout_marginRight="20dp"
